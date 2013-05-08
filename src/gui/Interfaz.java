@@ -3,8 +3,12 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -23,6 +27,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
+import brep.Arista;
+import brep.Cara;
+import brep.Color;
 import brep.Vertice;
 import brepModels.Arbol;
 
@@ -67,7 +74,12 @@ public class Interfaz extends JFrame implements ChangeListener {
 	 */
 	public static void main(String[] args) {
 		
-		crearArbol();
+		//crearArbol();
+		try {
+			cargarFigura();
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
 		
 		EventQueue.invokeLater(new Runnable() {
 			@Override
@@ -267,12 +279,13 @@ public class Interfaz extends JFrame implements ChangeListener {
 	    	JSlider jslider = (JSlider) source;
 	    	if(jslider == sliderH1){
 	    		lblNewLabel.setText(arbol.HTAG + jslider.getValue());
-	    		if(sliderH1.getValue() < sliderH2.getValue())
-	    			sliderH2.setValue(sliderH1.getValue());
-	    		//sliderH2.setMajorTickSpacing(sliderH1.getValue() - sliderH2.getMinimum());
+	    		if(sliderH1.getValue() <= sliderH2.getValue())
+	    			sliderH2.setValue(sliderH1.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderH2){
 	    		lblNewLabel2.setText(arbol.RTAG + jslider.getValue());
+	    		if(sliderH2.getValue() >= sliderH1.getValue())
+	    			sliderH2.setValue(sliderH1.getValue() - 1);
 	    	}
 	    	
 	    	System.out.println("Slider changed: " + jslider.getValue());
@@ -293,6 +306,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		arbol.setAllHR(2, 2, 2, 2,   // Alturas
 					   2, 3, 4, 1);  // Radios
+		
 		
 		arbol.getVertices().add(new Vertice("v0"  ,  0, 8,  0));
 		
@@ -330,6 +344,72 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 
 		System.out.println(arbol.toString());
+	}
+	
+	public static void cargarFigura() throws IOException {
+		
+		arbol = new Arbol();
+		
+		arbol.setAllHR(2, 2, 2, 2,   // Alturas
+					   2, 3, 4, 1);  // Radios
+		
+		BufferedReader br = new BufferedReader(new FileReader("res/Arbol.txt"));
+	    try {
+	        String line = "";
+	        while ((line = br.readLine()) != null) {
+	        	
+	        	String s[] = line.split(" ");
+	        	if(s.length > 1){
+		        	ArrayList<String> ss = new ArrayList<String>();
+		        	for(int i=0; i<s.length; i++) 
+		        		if(s[i].length() > 0) 
+		        			ss.add(s[i]);
+		        	
+		        	System.out.println(ss.toString());
+		        	
+		        	if(ss.get(0).equalsIgnoreCase("v")){
+		        		Vertice vertice = new Vertice(ss.get(1), 
+		        									  Float.parseFloat(ss.get(2)),
+		        									  Float.parseFloat(ss.get(3)), 
+		        									  Float.parseFloat(ss.get(4)));
+		        		arbol.getVertices().add(vertice);
+		        	}
+		        	else if(ss.get(0).equalsIgnoreCase("a")){
+		        		Arista arista = new Arista(ss.get(1), 
+		        								   ss.get(2), ss.get(3),
+		        								   ss.get(4), ss.get(5));
+		        		String aristasIzq[] = {ss.get(6), ss.get(7)};
+		        		String aristasDer[] = {ss.get(8), ss.get(9)};
+		        		arista.setAristasIzq(aristasIzq);
+		        		arista.setAristasDer(aristasDer);
+		        		arbol.getAristas().add(arista);
+		        	}
+		        	else if(ss.get(0).equalsIgnoreCase("c")){
+		        		Cara cara = new Cara(ss.get(1));
+		        		for(int i=2; i<ss.size(); i++){
+		        			cara.getAristas().add(ss.get(i));
+		        		}
+		        		arbol.getCaras().add(cara);
+		        	}
+		        	else if(ss.get(0).equalsIgnoreCase("color")){
+		        		Color color = new Color(ss.get(1),
+		        								Float.parseFloat(ss.get(2)),
+		        								Float.parseFloat(ss.get(3)),
+		        								Float.parseFloat(ss.get(4)));
+		        		for(int i=5; i<ss.size(); i++){
+		        			color.getCaras().add(ss.get(i));
+		        		}
+		        		arbol.getColores().add(color);
+		        	}
+		        	else if(ss.get(0).equalsIgnoreCase("objeto")){
+		        		arbol.setNombre(ss.get(1));
+		        	}
+	        	}
+	        }
+		} finally {
+	        br.close();
+	    }
+	    System.out.println(arbol.toString());
 	}
 }
 

@@ -10,6 +10,10 @@ public class ObjetoBRep {
 	private ArrayList<Cara> caras = new ArrayList<Cara>();
 	private ArrayList<Color> colores = new ArrayList<Color>(); 
 	
+	
+	public ObjetoBRep(){
+	}
+	
 	public ObjetoBRep(String nombre){
 		this.nombre = nombre;
 	}

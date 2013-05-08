@@ -4,16 +4,28 @@ public class Arista {
 
 	private String tag = "a";
 	private String nombre;
-	private Vertice v1, v2;
-	private Cara caraIzq, caraDer;
-	private Arista aristasIzq[], aristasDer[];
+	private String v1, v2;
+	private String caraIzq, caraDer;
+	private String aristasIzq[], aristasDer[];
 	
-	
-	@Override
-	public String toString(){
-		String str = "a ";
-		//str += this.name + " " + v1.getName() + " " + v2.getName();
-		return str;	
+	public Arista() {
+		super();
+	}
+
+	/**
+	 * @param nombre
+	 * @param v1
+	 * @param v2
+	 * @param caraIzq
+	 * @param caraDer
+	 */
+	public Arista(String nombre, String v1, String v2, String caraIzq, String caraDer) {
+		super();
+		this.nombre = nombre;
+		this.v1 = v1;
+		this.v2 = v2;
+		this.caraIzq = caraIzq;
+		this.caraDer = caraDer;
 	}
 
 	/**
@@ -47,86 +59,94 @@ public class Arista {
 	/**
 	 * @return the v1
 	 */
-	public Vertice getV1() {
+	public String getV1() {
 		return v1;
 	}
 
 	/**
 	 * @param v1 the v1 to set
 	 */
-	public void setV1(Vertice v1) {
+	public void setV1(String v1) {
 		this.v1 = v1;
 	}
 
 	/**
 	 * @return the v2
 	 */
-	public Vertice getV2() {
+	public String getV2() {
 		return v2;
 	}
 
 	/**
 	 * @param v2 the v2 to set
 	 */
-	public void setV2(Vertice v2) {
+	public void setV2(String v2) {
 		this.v2 = v2;
 	}
 
 	/**
 	 * @return the caraIzq
 	 */
-	public Cara getCaraIzq() {
+	public String getCaraIzq() {
 		return caraIzq;
 	}
 
 	/**
 	 * @param caraIzq the caraIzq to set
 	 */
-	public void setCaraIzq(Cara caraIzq) {
+	public void setCaraIzq(String caraIzq) {
 		this.caraIzq = caraIzq;
 	}
 
 	/**
 	 * @return the caraDer
 	 */
-	public Cara getCaraDer() {
+	public String getCaraDer() {
 		return caraDer;
 	}
 
 	/**
 	 * @param caraDer the caraDer to set
 	 */
-	public void setCaraDer(Cara caraDer) {
+	public void setCaraDer(String caraDer) {
 		this.caraDer = caraDer;
 	}
 
 	/**
 	 * @return the aristasIzq
 	 */
-	public Arista[] getAristasIzq() {
+	public String[] getAristasIzq() {
 		return aristasIzq;
 	}
 
 	/**
 	 * @param aristasIzq the aristasIzq to set
 	 */
-	public void setAristasIzq(Arista[] aristasIzq) {
+	public void setAristasIzq(String[] aristasIzq) {
 		this.aristasIzq = aristasIzq;
 	}
 
 	/**
 	 * @return the aristasDer
 	 */
-	public Arista[] getAristasDer() {
+	public String[] getAristasDer() {
 		return aristasDer;
 	}
 
 	/**
 	 * @param aristasDer the aristasDer to set
 	 */
-	public void setAristasDer(Arista[] aristasDer) {
+	public void setAristasDer(String[] aristasDer) {
 		this.aristasDer = aristasDer;
 	}
 
+	@Override
+	public String toString(){
+		String str = "";
+		str += tag + " " + nombre + " " + v1 + " " + v2 + " ";
+		str += caraIzq + " " + caraDer + " ";
+		str += aristasIzq[0] + " " + aristasIzq[1] + " " + aristasDer[0] + " " + aristasDer[1];
+		return str;	
+	}
 
 }

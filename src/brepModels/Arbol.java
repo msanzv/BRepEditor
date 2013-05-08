@@ -28,6 +28,11 @@ public class Arbol extends ObjetoBRep {
 	private int h1, h2, h3, h4;
 	private int r1, r2, r3, r4;
 
+	/**
+	 * Constructor vacio
+	 */
+	public Arbol() {
+	}
 	
 	/**
 	 * Constructor con nombre
