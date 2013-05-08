@@ -1,0 +1,118 @@
+Objeto espada
+
+v v0 0 12 0 
+v v1e0 0.5 10 0.5
+v v1e1 0.5 10 -0.5
+v v1e2 -0.5 10 -0.5
+v v1e3 -0.5 10 0.5
+
+v v2i0 0.5 4 0.5
+v v2i1 0.5 4 -0.5
+v v2i2 -0.5 4 -0.5
+v v2i3 -0.5 4 0.5
+
+v v2e0 2 3.5 0.5
+v v2e1 2 3.5 -0.5
+v v2e2 -2 3.5 -0.5
+v v2e3 -2 3.5 0.5
+
+v v3e0 2 3 0.5
+v v3e1 2 3 -0.5
+v v3e2 -2 3 -0.5
+v v3e3 -2 3 0.5
+
+v v3i0 0.5 2.5 0.5
+v v3i1 0.5 2.5 -0.5
+v v3i2 -0.5 2.5 -0.5
+v v3i3 -0.5 2.5 0.5
+
+v v4i0 0.5 0.5 0.5 
+v v4i1 0.5 0.5 -0.5
+v v4i2 -0.5 0.5 -0.5
+v v4i3 -0.5 0.5 0.5
+
+a a1e0 v0 v1e0 c1e0 c1e3 a1b0 a1e1 a1e3 a1b3
+a a1e1 v0 v1e1 c1e1 c1e0 a1b1 a1e2 a1e0 a1b0
+a a1e2 v0 v1e2 c1e2 c1e1 a1b2 a1e3 a1e1 a1b1
+a a1e3 v0 v1e3 c1e3 c1e2 a1b3 a1e0 a1e2 a1b2
+
+a a1b0 v1e0 v1e1 c1e0 c2e0 a1e1 a1e0 a2e0 a2e1
+a a1b1 v1e1 v1e2 c1e1 c2e1 a1e2 a1e1 a2e1 a2e2
+a a1b2 v1e2 v1e3 c1e2 c2e2 a1e3 a1e2 a2e2 a2e3
+a a1b3 v1e3 v1e0 c1e3 c2e3 a1e0 a1e3 a2e3 a2e0
+
+a a2e0 v1e0 v2i0 c2e0 c2e3 a2bi0 a1b0 a1b3 a2bi3
+a a2e1 v1e1 v2i1 c2e1 c2e0 a2bi1 a1b1 a1b0 a2bi0
+a a2e2 v1e2 v2i2 c2e2 c2e1 a2bi2 a1b2 a1b1 a2bi1
+a a2e3 v1e3 v2i3 c2e3 c2e2 a2bi3 a1b3 a1b2 a2bi2
+
+a a2bi0 v2i0 v2i1 c2e0 c3a0 a2e1 a2e0 a3e0 a3e1
+a a2bi1 v2i1 v2i2 c2e1 c3e1 a2e2 a2e1 a3e1 a3e2
+a a2bi2 v2i2 v2i3 c2e2 c3a1 a2e3 a2e2 a3e2 a3e3
+a a2bi3 v2i3 v2i0 c2e3 c3e3 a2e0 a2e3 a3e3 a3e0
+
+a a3e0 v2i0 v2e0 c3a0 c3e3 a3cd2 a2bi0 a2bi3 a3cd3
+a a3e1 v2i1 v2e1 c3e1 c3a0 a3cd1 a2bi1 a2bi0 a3cd2
+a a3e2 v2i2 v2e2 c3a1 c3e1 a3ci2 a2bi2 a2bi1 a3ci3
+a a3e3 v2i3 v2e3 c3e3 c3a1 a3ci1 a2bi3 a2bi2 a3ci2
+
+a a3cd0 v3e0 v3e1 c3e0 c3b0 a3cd1 a3cd3 a3b0 a3b1
+a a3cd1 v3e1 v2e1 c3e0 c3e1 a3cd2 a3cd0 a3b1 a3e1
+a a3cd2 v2e1 v2e0 c3e0 c3a0 a3cd3 a3cd1 a3e1 a3e0
+a a3cd3 v2e0 v3e0 c3e0 c3e3 a3cd0 a3cd2 a3e0 a3b0
+
+a a3ci0 v3e2 v3e3 c3e2 c3b1 a3ci1 a3ci3 a3b2 a3b3
+a a3ci1 v3e3 v2e3 c3e2 c3e3 a3ci2 a3ci0 a3b3 a3e3
+a a3ci2 v2e3 v2e2 c3e2 c3a1 a3ci3 a3ci1 a3e3 a3e2
+a a3ci3 v2e2 v3e2 c3e2 c3e1 a3ci0 a3ci2 a3e2 a3b2
+  
+a a3b0 v3i0 v3e0 c3e3 c3b0 a3cd3 a3bi3 a3bi0 a3cd0
+a a3b1 v3i1 v3e1 c3b0 c3e1 a3cd0 a3bi0 a3bi1 a3cd1
+a a3b2 v3i2 v3e2 c3e1 c3b1 a3ci3 a3bi1 a3bi2 a3ci0
+a a3b3 v3i3 v3e3 c3b1 c3e3 a3ci0 a3bi2 a3bi3 a3ci1 
+
+a a3bi0 v3i0 v3i1 c3b0 c4e0 a3b1 a3b0 a4e0 a4e1 
+a a3bi1 v3i1 v3i2 c3e1 c4e1 a3b2 a3b1 a4e1 a4e2
+a a3bi2 v3i2 v3i3 c3b1 c4e2 a3b3 a3b2 a4e2 a4e3 
+a a3bi3 v3i3 v3i0 c3e3 c4e3 a3b0 a3b3 a4e3 a4e0
+
+a a4e0 v3i0 v4i0 c4e0 c4e3 a4b0 a3bi0 a3bi3 a4b3
+a a4e1 v3i1 v4i1 c4e1 c4e0 a4b1 a3bi1 a3bi0 a4b0
+a a4e2 v3i2 v4i2 c4e2 c4e1 a4b2 a3bi2 a3bi1 a4b1
+a a4e3 v3i3 v4i3 c4e3 c4e2 a4b3 a3bi3 a3bi2 a4b2
+
+a a4b0 v4i0 v4i1 c4e0 c5 a4e1 a4e0 a4b3 a4b1
+a a4b1 v4i1 v4i2 c4e1 c5 a4e2 a4e1 a4b0 a4b2
+a a4b2 v4i2 v4i3 c4e2 c5 a4e3 a4e2 a4b1 a4b3
+a a4b3 v4i3 v4i0 c4e3 c5 a4e0 a4e3 a4b2 a4b0
+
+
+c c1e0 a1e0 a1e1 a1b0 
+c c1e1 a1e1 a1e2 a1b1 
+c c1e2 a1e2 a1e3 a1b2 
+c c1e3 a1e3 a1e0 a1b3 
+
+c c2e0 a2e0 a1b0 a2e1 a2bi0 
+c c2e1 a2e1 a1b1 a2e2 a2bi1 
+c c2e2 a2e2 a1b2 a2e3 a2bi2 
+c c2e3 a2e3 a1b3 a2e0 a2bi3 
+
+c c3a0 a3e0 a2bi0 a3e1 a3cd2
+c c3a1 a2bi2 a3e3 a3ci2 a3e2
+
+c c3e0 a3cd0 a3cd3 a3cd2 a3cd1 
+c c3e1 a3e1 a2bi1 a3e2 a3ci3 a3b2 a3bi1 a3b1 a3cd1
+c c3e2 a3ci0 a3ci3 a3ci2 a3ci1 
+c c3e3 a2bi3 a3e0 a3cd3 a3b0 a3bi3 a3b3 a3ci1 a3e3
+
+c c3b0 a3b0 a3cd0 a3b1 a3bi0 
+c c3b1 a3b3 a3bi2 a3b2 a3ci0 
+
+c c4e0 a3bi0 a4e1 a4b0 a4e0 
+c c4e1 a3bi1 a4e2 a4b1 a4e1 
+c c4e2 a3bi2 a4e3 a4b2 a4e2 
+c c4e3 a3bi3 a4e0 a4b3 a4e3
+
+c c5 a4b0 a4b1 a4b2 a4b3
+
+Color rojo 1 0 0 c1e0 c1e1 c1e2 c1e3 c2e0 c2e1 c2e2 c2e3 c3a0 c3a1 c3e0 c3e1 c3e2 c3e3 c3b0 c3b1 c4e0 c4e1 c4e2 c4e3  c5
