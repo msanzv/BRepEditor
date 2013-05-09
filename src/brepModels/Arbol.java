@@ -4,6 +4,7 @@ package brepModels;
 import java.util.ArrayList;
 
 import brep.ObjetoBRep;
+import brep.Restriccion;
 import brep.Vertice;
 
 /**
@@ -12,7 +13,8 @@ import brep.Vertice;
  */
 public class Arbol extends ObjetoBRep {
 	
-	public final String IMGROUTE = "res/Arbol.png";
+	public final String IMG_PATH = "res/Arbol.png";
+	public final String TXT_PATH = "res/Arbol.txt";
     public final String HTAG = "Altura: ";
     public final String RTAG = "Radio: ";
 	
@@ -23,7 +25,7 @@ public class Arbol extends ObjetoBRep {
 	public final int R1MIN = 1, R1MAX =  6, R1STEP = 1;
 	public final int R2MIN = 3, R2MAX =  8, R2STEP = 1;
 	public final int R3MIN = 5, R3MAX = 10, R3STEP = 1;
-	public final int R4MIN = 1, R4MAX =  5, R4STEP = 1;
+	public final int R4MIN = 1, R4MAX =  4, R4STEP = 1;
 
 	private int h1, h2, h3, h4;
 	private int r1, r2, r3, r4;
@@ -42,43 +44,9 @@ public class Arbol extends ObjetoBRep {
 		super(nombre);
 	}
 	
-	
-	/**
-	 * Especifica todos los parametros
-	 * 
-	 * @param h1
-	 * @param h2
-	 * @param h3
-	 * @param h4
-	 * @param r1
-	 * @param r2
-	 * @param r3
-	 * @param r4
-	 */
-	public void setAllHR(int h1, int h2, int h3, int h4, 
-						 int r1, int r2, int r3, int r4) {
-		this.h1 = h1;
-		this.h2 = h2;
-		this.h3 = h3;
-		this.h4 = h4;
-		this.r1 = r1;
-		this.r2 = r2;
-		this.r3 = r3;
-		this.r4 = r4;
-	}
-	
 	/**
 	 * Calcula todos los vertices del arbol a partir de los valores
 	 * de alturas y radios seleccionados en la interfaz
-	 * 
-	 * @param h1
-	 * @param h2
-	 * @param h3
-	 * @param h4
-	 * @param r1
-	 * @param r2
-	 * @param r3
-	 * @param r4
 	 */
 	public void calcularVertices(){
 		
@@ -95,6 +63,49 @@ public class Arbol extends ObjetoBRep {
 		//
 		
 		this.setVertices(vertices);
+	}
+	
+	public void initRestricciones(){
+		
+		ArrayList<Restriccion> restricciones = this.getRestricciones();
+		
+		restricciones.add(new Restriccion("h1", "Altura: ", 1, 10, 1, 3));
+		restricciones.add(new Restriccion("h2", "Altura: ", 1, 10, 1, 2));
+		restricciones.add(new Restriccion("h2", "Altura: ", 1, 10, 1, 2));
+		restricciones.add(new Restriccion("h3", "Altura: ", 1, 10, 1, 2));
+		
+		restricciones.add(new Restriccion("r1", "Radio: ", 1,  6, 1, 2));
+		restricciones.add(new Restriccion("r2", "Radio: ", 3,  8, 1, 4));
+		restricciones.add(new Restriccion("r3", "Radio: ", 5, 10, 1, 6));
+		restricciones.add(new Restriccion("r4", "Radio: ", 1,  4, 1, 2));
+		
+		this.setRestricciones(restricciones);
+	}
+	
+	
+	/**
+	 * Especifica todos los parametros
+	 * 
+	 * @param h1
+	 * @param h2
+	 * @param h3
+	 * @param h4
+	 * @param r1
+	 * @param r2
+	 * @param r3
+	 * @param r4
+	 */
+	public void setAllHR(int h1, int h2, int h3, int h4, 
+						 int r1, int r2, int r3, int r4) {
+		
+		this.getRestById("h1").setValue(h1);
+		this.getRestById("h2").setValue(h2);
+		this.getRestById("h3").setValue(h3);
+		this.getRestById("h4").setValue(h4);
+		this.getRestById("r1").setValue(r1);
+		this.getRestById("r2").setValue(r2);
+		this.getRestById("r3").setValue(r3);
+		this.getRestById("r4").setValue(r4);
 	}
 
 	/**

@@ -9,6 +9,7 @@ public class ObjetoBRep {
 	private ArrayList<Arista> aristas = new ArrayList<Arista>();
 	private ArrayList<Cara> caras = new ArrayList<Cara>();
 	private ArrayList<Color> colores = new ArrayList<Color>(); 
+	private ArrayList<Restriccion> restricciones = new ArrayList<Restriccion>();
 	
 	
 	public ObjetoBRep(){
@@ -111,7 +112,29 @@ public class ObjetoBRep {
 	public void setColores(ArrayList<Color> colores) {
 		this.colores = colores;
 	}
+
+	/**
+	 * @return the restricciones
+	 */
+	public ArrayList<Restriccion> getRestricciones() {
+		return restricciones;
+	}
+
+	/**
+	 * @param restricciones the restricciones to set
+	 */
+	public void setRestricciones(ArrayList<Restriccion> restricciones) {
+		this.restricciones = restricciones;
+	}
 	
+	public Restriccion getRestById(String id){
+		for(int i=0; i<restricciones.size(); i++){
+			if(restricciones.get(i).getId().equalsIgnoreCase(id)){
+				return restricciones.get(i);
+			}
+		}
+		return null;
+	}
 
 
 }
