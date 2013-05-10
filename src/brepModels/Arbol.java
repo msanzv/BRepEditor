@@ -45,34 +45,16 @@ public class Arbol extends ObjetoBRep {
 	}
 	
 	/**
-	 * Calcula todos los vertices del arbol a partir de los valores
-	 * de alturas y radios seleccionados en la interfaz
+	 * Especifica todas las restricciones propias de la figura
 	 */
-	public void calcularVertices(){
-		
-		ArrayList<Vertice> vertices = this.getVertices();
-		
-		vertices.get(0).setXYZ(0, h1+h2+h3+h4, 0);
-
-		vertices.get(1).setXYZ( r1, h2+h3+h4,  r1);
-		vertices.get(2).setXYZ( r1, h2+h3+h4, -r1);
-		vertices.get(3).setXYZ(-r1, h2+h3+h4, -r1);
-		vertices.get(4).setXYZ(-r1, h2+h3+h4,  r1);
-		//
-		// ...
-		//
-		
-		this.setVertices(vertices);
-	}
-	
 	public void initRestricciones(){
 		
 		ArrayList<Restriccion> restricciones = this.getRestricciones();
 		
 		restricciones.add(new Restriccion("h1", "Altura: ", 1, 10, 1, 3));
 		restricciones.add(new Restriccion("h2", "Altura: ", 1, 10, 1, 2));
-		restricciones.add(new Restriccion("h2", "Altura: ", 1, 10, 1, 2));
 		restricciones.add(new Restriccion("h3", "Altura: ", 1, 10, 1, 2));
+		restricciones.add(new Restriccion("h4", "Altura: ", 1, 10, 1, 2));
 		
 		restricciones.add(new Restriccion("r1", "Radio: ", 1,  6, 1, 2));
 		restricciones.add(new Restriccion("r2", "Radio: ", 3,  8, 1, 4));
@@ -80,6 +62,48 @@ public class Arbol extends ObjetoBRep {
 		restricciones.add(new Restriccion("r4", "Radio: ", 1,  4, 1, 2));
 		
 		this.setRestricciones(restricciones);
+	}
+	
+	/**
+	 * Calcula todos los vertices del arbol a partir de los valores
+	 * de alturas y radios seleccionados en la interfaz
+	 */
+	public void calcularVertices(int h1, int h2, int h3, int h4, int r1, int r2, int r3, int r4){
+		
+		ArrayList<Vertice> vertices = this.getVertices();
+		
+		vertices.get(0).setXYZ(0, h1+h2+h3+h4, 0);
+
+		vertices.get(1).setXYZ(  r1,    h2+h3+h4,   r1);
+		vertices.get(2).setXYZ(  r1,    h2+h3+h4,  -r1);
+		vertices.get(3).setXYZ( -r1,    h2+h3+h4,  -r1);
+		vertices.get(4).setXYZ( -r1,    h2+h3+h4,   r1);
+		vertices.get(5).setXYZ(  r1/2,  h2+h3+h4,   r1/2);
+		vertices.get(6).setXYZ(  r1/2,  h2+h3+h4,  -r1/2);
+		vertices.get(7).setXYZ( -r1/2,  h2+h3+h4,  -r1/2);
+		vertices.get(8).setXYZ( -r1/2,  h2+h3+h4,   r1/2);
+		vertices.get(9).setXYZ(  r2,    h3+h4,      r2);
+		vertices.get(10).setXYZ( r2,    h3+h4,     -r2);
+		vertices.get(11).setXYZ(-r2,    h3+h4,     -r2);
+		vertices.get(12).setXYZ(-r2,    h3+h4,      r2);
+		vertices.get(13).setXYZ( r2/2,  h3+h4,      r2/2);
+		vertices.get(14).setXYZ( r2/2,  h3+h4,     -r2/2);
+		vertices.get(15).setXYZ(-r2/2,  h3+h4,     -r2/2);
+		vertices.get(16).setXYZ(-r2/2,  h3+h4,      r2/2);
+		vertices.get(17).setXYZ( r3,    h4,         r3);
+		vertices.get(18).setXYZ( r3,    h4,        -r3);
+		vertices.get(19).setXYZ(-r3,    h4,        -r3);
+		vertices.get(20).setXYZ(-r3,    h4,         r3);
+		vertices.get(21).setXYZ( r3/2,  h4,         r3/2);
+		vertices.get(22).setXYZ( r3/2,  h4,        -r3/2);
+		vertices.get(23).setXYZ(-r3/2,  h4,        -r3/2);
+		vertices.get(24).setXYZ(-r3/2,  h4,         r3/2);
+		vertices.get(25).setXYZ( r4,     0,         r4);
+		vertices.get(26).setXYZ( r4,     0,        -r4);
+		vertices.get(27).setXYZ(-r4,     0,        -r4);
+		vertices.get(28).setXYZ(-r4,     0,         r4);
+		
+		this.setVertices(vertices);
 	}
 	
 	
@@ -107,7 +131,7 @@ public class Arbol extends ObjetoBRep {
 		this.getRestById("r3").setValue(r3);
 		this.getRestById("r4").setValue(r4);
 	}
-
+	
 	/**
 	 * @return the h1
 	 */

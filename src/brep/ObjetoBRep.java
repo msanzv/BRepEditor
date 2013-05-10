@@ -19,29 +19,6 @@ public class ObjetoBRep {
 		this.nombre = nombre;
 	}
 	
-	
-	/* (non-Javadoc)
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		String str = "";
-		str += "Objeto " + this.nombre + "\n";
-		str += "\n# Vertices\n";
-		for(int i=0; i<getVertices().size(); i++)	
-			str += this.getVertices().get(i).toString() + "\n";
-		str += "\n# Aristas\n";
-		for(int i=0; i<getAristas().size(); i++) 	
-			str += this.getAristas().get(i).toString() + "\n";
-		str += "\n# Caras\n";
-		for(int i=0; i<getCaras().size(); i++) 		
-			str += this.getCaras().get(i).toString() + "\n";
-		str += "\n# Colores\n";
-		for(int i=0; i<getColores().size(); i++) 	
-			str += this.getColores().get(i).toString() + "\n";
-		return str;
-	}
-	
 
 	/**
 	 * @return the nombre
@@ -134,6 +111,39 @@ public class ObjetoBRep {
 			}
 		}
 		return null;
+	}
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		
+		String str = "";
+		
+		str += "## File generated with BRepEditor - http://github.com/seiseises/BRepEditor\n";
+		str += "## Created by Diego Panadero & Mario Sanz\n\n";
+		
+		str += "Objeto " + this.nombre + "\n";
+		
+		str += "\n# Vertices\n";
+		for(int i=0; i<getVertices().size(); i++)	
+			str += this.getVertices().get(i).toString() + "\n";
+		
+		str += "\n# Aristas\n";
+		for(int i=0; i<getAristas().size(); i++) 	
+			str += this.getAristas().get(i).toString() + "\n";
+		
+		str += "\n# Caras\n";
+		for(int i=0; i<getCaras().size(); i++) 		
+			str += this.getCaras().get(i).toString() + "\n";
+		
+		str += "\n# Colores\n";
+		for(int i=0; i<getColores().size(); i++) 	
+			str += this.getColores().get(i).toString() + "\n";
+		
+		return str;
 	}
 
 

@@ -1,15 +1,20 @@
 package gui;
 
 import java.awt.BorderLayout;
+import java.awt.Container;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.swing.Action;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -34,6 +39,8 @@ import brep.Vertice;
 import brepModels.Arbol;
 
 import net.miginfocom.swing.MigLayout;
+import javax.swing.JButton;
+import javax.swing.JMenu;
 
 
 public class Interfaz extends JFrame implements ChangeListener {
@@ -45,8 +52,8 @@ public class Interfaz extends JFrame implements ChangeListener {
 	private JPanel contentPane;
 	private JLabel txtFigura;
 	
-	private JLabel labelH1, labelH2;
-	private MyJSlider sliderH1, sliderH2;
+	private JLabel labelH1, labelH2, labelH3, labelH4, labelR1, labelR2, labelR3, labelR4;
+	private MyJSlider sliderH1, sliderH2, sliderH3, sliderH4, sliderR1, sliderR2, sliderR3, sliderR4;
 	
 	private static Arbol arbol;
 	
@@ -76,7 +83,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		//crearArbol();
 		try {
-			cargarFigura();
+			cargar();
 		} catch (IOException e1) {
 			e1.printStackTrace();
 		}
@@ -101,7 +108,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		// Panel de contenido
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 400);
+		setBounds(100, 100, 600, 480);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -112,14 +119,37 @@ public class Interfaz extends JFrame implements ChangeListener {
 		menuBar.setBounds(0, 0, 600, 22);
 		contentPane.add(menuBar);
 		
-		JMenuItem mntmArchivo = new JMenuItem("Archivo");
-		menuBar.add(mntmArchivo);
-		JMenuItem mntmEdicin = new JMenuItem("Edici\u00F3n");
-		menuBar.add(mntmEdicin);
-		JMenuItem mntmOpciones = new JMenuItem("Opciones");
-		menuBar.add(mntmOpciones);
-		JMenuItem mntmAyuda = new JMenuItem("Ayuda");
-		menuBar.add(mntmAyuda);
+		JMenu mnArchivo = new JMenu("Archivo");
+		menuBar.add(mnArchivo);
+		
+		JMenuItem mntmGuardar = new JMenuItem("Guardar");
+		mntmGuardar.addActionListener(new ActionListener() {
+	        @Override
+			public void actionPerformed(ActionEvent arg0) {
+	             guardar();
+	        }
+	    });
+		mnArchivo.add(mntmGuardar);
+	    
+		
+		JMenuItem mntmSalir = new JMenuItem("Salir");
+		mntmSalir.addActionListener(new ActionListener() {
+	        @Override
+			public void actionPerformed(ActionEvent arg0) {
+	             System.exit(0);
+	        }
+	    });
+		mnArchivo.add(mntmSalir);
+		
+		JMenu mnEdicion = new JMenu("Edicion");
+		menuBar.add(mnEdicion);
+		
+		JMenu mnOpciones = new JMenu("Opciones");
+		menuBar.add(mnOpciones);
+		
+		JMenu mnAyuda = new JMenu("Ayuda");
+		menuBar.add(mnAyuda);
+		
 		
 		// Selector de figuras
 		txtFigura = new JLabel();
@@ -169,50 +199,85 @@ public class Interfaz extends JFrame implements ChangeListener {
 		Restriccion rest = arbol.getRestById("h1");
 		
 		labelH1 = new JLabel(rest.getTag() + (rest.getValue()<10 ? "  " : "") + rest.getValue());
-		panelControles.add(labelH1, "cell 0 0");
+		panelControles.add(labelH1);
 
 		sliderH1 = new MyJSlider(rest.getMin(), rest.getMax(), rest.getStep(), rest.getValue());
 		sliderH1.addChangeListener(this);
-		panelControles.add(sliderH1, "cell 1 0");
+		panelControles.add(sliderH1, "wrap");
 		
 		// Restriccion 2
 		Restriccion rest2 = arbol.getRestById("h2");
 		
 		labelH2 = new JLabel(rest2.getTag() + (rest2.getValue()<10 ? "  " : "") + rest2.getValue());
-		panelControles.add(labelH2, "cell 0 1");
+		panelControles.add(labelH2);
 		
 		sliderH2 = new MyJSlider(rest2.getMin(), rest2.getMax(), rest2.getStep(), rest2.getValue());
         sliderH2.addChangeListener(this);
-		panelControles.add(sliderH2, "cell 1 1");
+		panelControles.add(sliderH2, "wrap");
 		
+		// Restriccion 3
+		Restriccion rest3 = arbol.getRestById("h3");
 		
-		JLabel lblAltura = new JLabel("Altura");
-		panelControles.add(lblAltura, "cell 0 3");
+		labelH3 = new JLabel(rest3.getTag() + (rest3.getValue()<10 ? "  " : "") + rest3.getValue());
+		panelControles.add(labelH3);
 		
-		JSlider sliderH3 = new JSlider(1, 10, 5);
-		sliderH3.setMajorTickSpacing(9);
-		sliderH3.setMinorTickSpacing(1);
-		sliderH3.setPaintLabels(true);
-		sliderH3.setPaintTicks(true);
-		sliderH3.setSnapToTicks(true);
+		sliderH3 = new MyJSlider(rest3.getMin(), rest3.getMax(), rest3.getStep(), rest3.getValue());
         sliderH3.addChangeListener(this);
-		panelControles.add(sliderH3, "cell 1 3");
+		panelControles.add(sliderH3, "wrap");
+		
+		// Restriccion 4
+		Restriccion rest4 = arbol.getRestById("h4");
+		
+		labelH4 = new JLabel(rest4.getTag() + (rest4.getValue()<10 ? "  " : "") + rest4.getValue());
+		panelControles.add(labelH4);
+		
+		sliderH4 = new MyJSlider(rest4.getMin(), rest4.getMax(), rest4.getStep(), rest4.getValue());
+        sliderH4.addChangeListener(this);
+		panelControles.add(sliderH4, "wrap");
+		
+		// Restriccion 5
+		Restriccion rest5 = arbol.getRestById("r1");
+		
+		labelR1 = new JLabel(rest5.getTag() + (rest5.getValue()<10 ? "  " : "") + rest5.getValue());
+		panelControles.add(labelR1);
+		
+		sliderR1  = new MyJSlider(rest5.getMin(), rest5.getMax(), rest5.getStep(), rest5.getValue());
+        sliderR1.addChangeListener(this);
+		panelControles.add(sliderR1, "wrap");
+		
+		// Restriccion 6
+		Restriccion rest6 = arbol.getRestById("r2");
+		
+		labelR2 = new JLabel(rest6.getTag() + (rest6.getValue()<10 ? "  " : "") + rest6.getValue());
+		panelControles.add(labelR2);
+		
+		sliderR2 = new MyJSlider(rest6.getMin(), rest6.getMax(), rest6.getStep(), rest6.getValue());
+        sliderR2.addChangeListener(this);
+		panelControles.add(sliderR2, "wrap");
+		
+		// Restriccion 7
+		Restriccion rest7 = arbol.getRestById("r3");
+		
+		labelR3 = new JLabel(rest7.getTag() + (rest7.getValue()<10 ? "  " : "") + rest7.getValue());
+		panelControles.add(labelR3);
+		
+		sliderR3 = new MyJSlider(rest7.getMin(), rest7.getMax(), rest7.getStep(), rest7.getValue());
+        sliderR3.addChangeListener(this);
+		panelControles.add(sliderR3, "wrap");	
+		
+		// Restriccion 8
+		Restriccion rest8 = arbol.getRestById("r4");
+		
+		labelR4 = new JLabel(rest8.getTag() + (rest8.getValue()<10 ? "  " : "") + rest8.getValue());
+		panelControles.add(labelR4);
+		
+		sliderR4 = new MyJSlider(rest8.getMin(), rest8.getMax(), rest8.getStep(), rest8.getValue());
+        sliderR4.addChangeListener(this);
+		panelControles.add(sliderR4, "wrap");
 		
 		
-		JLabel lblNewLabel_2 = new JLabel("Radio");
-		panelControles.add(lblNewLabel_2, "cell 0 4");
 		
-		JSlider sliderH4 = new JSlider(1, 10, 5);
-		sliderH4.setMinorTickSpacing(1);
-		sliderH4.setMajorTickSpacing(9);
-		sliderH4.setPaintLabels(true);
-		sliderH4.setPaintTicks(true);
-		sliderH4.setSnapToTicks(true);
-		sliderH4.addChangeListener(this);
-		panelControles.add(sliderH4, "cell 1 4");
-		
-		
-		JLabel lblNewLabel_3 = new JLabel("Altura");
+	/*	JLabel lblNewLabel_3 = new JLabel("Altura");
 		panelControles.add(lblNewLabel_3, "cell 0 6");
 		
 		JSlider slider_4 = new JSlider(1, 10, 5);
@@ -222,27 +287,29 @@ public class Interfaz extends JFrame implements ChangeListener {
 		slider_4.setPaintTicks(true);
 		slider_4.setSnapToTicks(true);
 		slider_4.addChangeListener(this);
-		panelControles.add(slider_4, "cell 1 6");
+		panelControles.add(slider_4, "cell 1 6");*/
 		
 		
 		JLabel labelColor = new JLabel("- Color -");
-		panelControles.add(labelColor, "cell 1 7");
+		//panelControles.add(new JLabel(""));
+		panelControles.add(labelColor, "span");
 		
 		JLabel labelR = new JLabel("R:");
-		panelControles.add(labelR, "cell 0 8");
+		panelControles.add(labelR);
 		
 		JSlider sliderR = new JSlider(0, 255, 0);
 		sliderR.setMinorTickSpacing(128);
 		sliderR.setMajorTickSpacing(255);
 		sliderR.setPaintLabels(true);
 		sliderR.setPaintTicks(true);
-		panelControles.add(sliderR, "cell 1 8");
+		panelControles.add(sliderR);
 		
 		JSpinner spinnerR = new JSpinner();
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 255, 1);
 		spinnerR.setModel(model);
 		spinnerR.setEditor(new JSpinner.NumberEditor(spinnerR, FORMAT));
-		panelControles.add(spinnerR, "cell 1 8");
+		panelControles.add(spinnerR, "wrap");
+		
 		
 		/*JLabel lblR = new JLabel("R:");
 		panel_2.add(lblR, "flowx,cell 1 5");
@@ -282,7 +349,9 @@ public class Interfaz extends JFrame implements ChangeListener {
 		} */
 		
 	}
+  
 
+	
 	@Override
 	public void stateChanged(ChangeEvent changeEvent) {
 	    Object source = changeEvent.getSource();
@@ -294,9 +363,35 @@ public class Interfaz extends JFrame implements ChangeListener {
 	    			sliderH2.setValue(sliderH1.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderH2){
-	    		labelH2.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		labelH2.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
 	    		if(sliderH2.getValue() >= sliderH1.getValue())
 	    			sliderH2.setValue(sliderH1.getValue() - 1);
+	    	}
+	    	else if(jslider == sliderH3){
+	    		labelH3.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		if(sliderH3.getValue() >= sliderH2.getValue()||sliderH3.getValue() >= sliderH1.getValue())
+	    			sliderH3.setValue(sliderH2.getValue() - 1);
+	    	}
+	    	else if(jslider == sliderH4){
+	    		labelH4.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		if(sliderH4.getValue() >= sliderH3.getValue())
+	    			sliderH4.setValue(sliderH3.getValue() - 1);
+	    	}
+	    	else if(jslider == sliderR1){
+	    		labelR1.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+
+	    	}
+	    	else if(jslider == sliderR2){
+	    		labelR2.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+
+	    	}
+	    	else if(jslider == sliderR3){
+	    		labelR3.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+
+	    	}
+	    	else if(jslider == sliderR4){
+	    		labelR4.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+
 	    	}
 	    	
 	    	System.out.println("Slider changed: " + jslider.getValue());
@@ -311,57 +406,30 @@ public class Interfaz extends JFrame implements ChangeListener {
 	    }
 	}
 	
-	public static void crearArbol(){
+	
+	public void guardar(){
 		
-		arbol = new Arbol("Arbol1");
-		
-		arbol.setAllHR(2, 2, 2, 2,   // Alturas
-					   2, 3, 4, 1);  // Radios
-		
-		
-		arbol.getVertices().add(new Vertice("v0"  ,  0, 8,  0));
-		
-		arbol.getVertices().add(new Vertice("v1e0",  2, 6,  2));
-		arbol.getVertices().add(new Vertice("v1e1",  2, 6, -2));
-		arbol.getVertices().add(new Vertice("v1e2", -2, 6, -2));
-		arbol.getVertices().add(new Vertice("v1e3", -2, 6,  2));
-		arbol.getVertices().add(new Vertice("v1i0",  1, 6,  1));
-		arbol.getVertices().add(new Vertice("v1i1",  1, 6, -1));
-		arbol.getVertices().add(new Vertice("v1i2", -1, 6, -1));
-		arbol.getVertices().add(new Vertice("v1i3", -1, 6,  1));
+		//Le pasamos el valor del spinner a los radios/alturas
+		arbol.calcularVertices(sliderH1.getValue(), sliderH2.getValue(),
+				sliderH3.getValue(), sliderH4.getValue(),
+				sliderR1.getValue(), sliderR2.getValue(),
+				sliderR3.getValue(), sliderR4.getValue());
 
-		arbol.getVertices().add(new Vertice("v2e0",  3, 4,  3));
-		arbol.getVertices().add(new Vertice("v2e1",  3, 4, -3));
-		arbol.getVertices().add(new Vertice("v2e2", -3, 4, -3));
-		arbol.getVertices().add(new Vertice("v2e3", -3, 4,  3));
-		arbol.getVertices().add(new Vertice("v2i0",  1.5f, 4f,  1.5f));
-		arbol.getVertices().add(new Vertice("v2i1",  1.5f, 4f, -1.5f));
-		arbol.getVertices().add(new Vertice("v2i2", -1.5f, 4f, -1.5f));
-		arbol.getVertices().add(new Vertice("v2i3", -1.5f, 4f,  1.5f));
-
-		arbol.getVertices().add(new Vertice("v3e0",  4, 2,  4));
-		arbol.getVertices().add(new Vertice("v3e1",  4, 2, -4));
-		arbol.getVertices().add(new Vertice("v3e2", -4, 2, -4));
-		arbol.getVertices().add(new Vertice("v3e3", -4, 2,  4));
-		arbol.getVertices().add(new Vertice("v3i0",  2, 2,  2));
-		arbol.getVertices().add(new Vertice("v3i1",  2, 2, -2));
-		arbol.getVertices().add(new Vertice("v3i2", -2, 2, -2));
-		arbol.getVertices().add(new Vertice("v3i3", -2, 2,  2));
-
-		arbol.getVertices().add(new Vertice("v4b0",  1, 0,  1));
-		arbol.getVertices().add(new Vertice("v4b1",  1, 0, -1));
-		arbol.getVertices().add(new Vertice("v4b2", -1, 0, -1));
-		arbol.getVertices().add(new Vertice("v4b3", -1, 0,  1));
-		
-
-		System.out.println(arbol.toString());
+		//Escribimos en fichero de salida
+		String ss = arbol.toString();
+		try{
+			FileWriter fichero = new FileWriter("gen/arbol.txt");
+			fichero.write(ss);
+			fichero.close();
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
 	}
 	
-	public static void cargarFigura() throws IOException {
+	public static void cargar() throws IOException {
 		
 		arbol = new Arbol();
 		arbol.initRestricciones();
-		//arbol.setAllHR(2, 2, 2, 2, 2, 3, 4, 1);
 		
 		BufferedReader br = new BufferedReader(new FileReader(arbol.TXT_PATH));
 	    try {
@@ -374,8 +442,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		        	for(int i=0; i<s.length; i++) 
 		        		if(s[i].length() > 0) 
 		        			ss.add(s[i]);
-		        	
-		        	System.out.println(ss.toString());
+		        	//System.out.println(ss.toString());
 		        	
 		        	if(ss.get(0).equalsIgnoreCase("v")){
 		        		Vertice vertice = new Vertice(ss.get(1), 
@@ -420,9 +487,8 @@ public class Interfaz extends JFrame implements ChangeListener {
 	        br.close();
 	    }
 	    
-	    System.out.println(arbol.toString());
+	    //System.out.println(arbol.toString());
 	}
-	
 }
 
 

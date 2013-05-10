@@ -1,0 +1,128 @@
+## File generated with BRepEditor - http://github.com/seiseises/BRepEditor
+## Created by Diego Panadero & Mario Sanz
+
+Objeto arbol
+
+# Vertices
+v v0 0.0 19.0 0.0
+v v1e0 4.0 12.0 4.0
+v v1e1 4.0 12.0 -4.0
+v v1e2 -4.0 12.0 -4.0
+v v1e3 -4.0 12.0 4.0
+v v1i0 2.0 12.0 2.0
+v v1i1 2.0 12.0 -2.0
+v v1i2 -2.0 12.0 -2.0
+v v1i3 -2.0 12.0 2.0
+v v2e0 5.0 7.0 5.0
+v v2e1 5.0 7.0 -5.0
+v v2e2 -5.0 7.0 -5.0
+v v2e3 -5.0 7.0 5.0
+v v2i0 2.0 7.0 2.0
+v v2i1 2.0 7.0 -2.0
+v v2i2 -2.0 7.0 -2.0
+v v2i3 -2.0 7.0 2.0
+v v3e0 8.0 3.0 8.0
+v v3e1 8.0 3.0 -8.0
+v v3e2 -8.0 3.0 -8.0
+v v3e3 -8.0 3.0 8.0
+v v3i0 4.0 3.0 4.0
+v v3i1 4.0 3.0 -4.0
+v v3i2 -4.0 3.0 -4.0
+v v3i3 -4.0 3.0 4.0
+v v4b0 2.0 0.0 2.0
+v v4b1 2.0 0.0 -2.0
+v v4b2 -2.0 0.0 -2.0
+v v4b3 -2.0 0.0 2.0
+
+# Aristas
+a a1e0 v0 v1e0 c1e0 c1e3 a1b0 a1e1 a1e3 a1b3
+a a1e1 v0 v1e1 c1e1 c1e0 a1b1 a1e2 a1e0 a1b0
+a a1e2 v0 v1e2 c1e2 c1e1 a1b2 a1e3 a1e1 a1b1
+a a1e3 v0 v1e3 c1e3 c1e2 a1b3 a1e0 a1e2 a1b2
+a a1b0 v1e0 v1e1 c1e0 c1i0 a1e1 a1e0 a1i0 a1i1
+a a1b1 v1e1 v1e2 c1e1 c1i1 a1e2 a1e1 a1i1 a1i2
+a a1b2 v1e2 v1e3 c1e2 c1i2 a1e3 a1e2 a1i2 a1i3
+a a1b3 v1e3 v1e0 c1e3 c1i3 a1e0 a1e3 a1i3 a1i0
+a a1i0 v1e0 v1i0 c1i0 c1i3 a1bi0 a1b0 a1b3 a1bi3
+a a1i1 v1e1 v1i1 c1i1 c1i0 a1bi1 a1b1 a1b0 a1bi0
+a a1i2 v1e2 v1i2 c1i2 c1i1 a1bi2 a1b2 a1b1 a1bi1
+a a1i3 v1e3 v1i3 c1i3 c1i2 a1bi3 a1b3 a1b2 a1bi2
+a a1bi0 v1i0 v1i1 c1i0 c2e0 a1i1 a1i0 a2e0 a2e1
+a a1bi1 v1i1 v1i2 c1i1 c2e1 a1i2 a1i1 a2e1 a2e2
+a a1bi2 v1i2 v1i3 c1i2 c2e2 a1i3 a1i2 a2e2 a2e3
+a a1bi3 v1i3 v1i0 c1i3 c2e3 a1i0 a1i3 a2e3 a2e0
+a a2e0 v1i0 v2e0 c2e0 c2e3 a2b0 a1bi0 a1bi3 a2b3
+a a2e1 v1i1 v2e1 c2e1 c2e0 a2b1 a1bi1 a1bi0 a2b0
+a a2e2 v1i2 v2e2 c2e2 c2e1 a2b2 a1bi2 a1bi1 a2b1
+a a2e3 v1i3 v2e3 c2e3 c2e2 a2b3 a1bi3 a1bi2 a2b2
+a a2b0 v2e0 v2e1 c2e0 c2i0 a2e1 a2e0 a2i0 a2i1
+a a2b1 v2e1 v2e2 c2e1 c2i1 a2e2 a2e1 a2i1 a2i2
+a a2b2 v2e2 v2e3 c2e2 c2i2 a2e3 a2e2 a2i2 a2i3
+a a2b3 v2e3 v2e0 c2e3 c2i3 a2e0 a2e3 a2i3 a2i0
+a a2i0 v2e0 v2i0 c2i0 c2i3 a2bi0 a2b0 a2b3 a2bi3
+a a2i1 v2e1 v2i1 c2i1 c2i0 a2bi1 a2b1 a2b0 a2bi0
+a a2i2 v2e2 v2i2 c2i2 c2i1 a2bi2 a2b2 a2b1 a2bi1
+a a2i3 v2e3 v2i3 c2i3 c2i2 a2bi3 a2b3 a2b2 a2bi2
+a a2bi0 v2i0 v2i1 c2i0 c3e0 a2i1 a2i0 a3e0 a3e1
+a a2bi1 v2i1 v2i2 c2i1 c3e1 a2i2 a2i1 a3e1 a3e2
+a a2bi2 v2i2 v2i3 c2i2 c3e2 a2i3 a2i2 a3e2 a3e3
+a a2bi3 v2i3 v2i0 c2i3 c3e3 a2i0 a2i3 a3e3 a3e0
+a a3e0 v2i0 v3e0 c3e0 c3e3 a3b0 a2bi0 a2bi3 a3b3
+a a3e1 v2i1 v3e1 c3e1 c3e0 a3b1 a2bi1 a2bi0 a3b0
+a a3e2 v2i2 v3e2 c3e2 c3e1 a3b2 a2bi2 a2bi1 a3b1
+a a3e3 v2i3 v3e3 c3e3 c3e2 a3b3 a2bi3 a2bi2 a3b2
+a a3b0 v3e0 v3e1 c3e0 c3i0 a3e1 a3e0 a3i0 a3i1
+a a3b1 v3e1 v3e2 c3e1 c3i1 a3e2 a3e1 a3i1 a3i2
+a a3b2 v3e2 v3e3 c3e2 c3i2 a3e3 a3e2 a3i2 a3i3
+a a3b3 v3e3 v3e0 c3e3 c3i3 a3e0 a3e3 a3i3 a3i0
+a a3i0 v3e0 v3i0 c3i0 c3i3 a3bi0 a3b0 a3b3 a3bi3
+a a3i1 v3e1 v3i1 c3i1 c3i0 a3bi1 a3b1 a3b0 a3bi0
+a a3i2 v3e2 v3i2 c3i2 c3i1 a3bi2 a3b2 a3b1 a3bi1
+a a3i3 v3e3 v3i3 c3i3 c3i2 a3bi3 a3b3 a3b2 a3bi2
+a a3bi0 v3i0 v3i1 c3i0 c4e0 a3i1 a3i0 a4e0 a4e1
+a a3bi1 v3i1 v3i2 c3i1 c4e1 a3i2 a3i1 a4e1 a4e2
+a a3bi2 v3i2 v3i3 c3i2 c4e2 a3i3 a3i2 a4e2 a4e3
+a a3bi3 v3i3 v3i0 c3i3 c4e3 a3i0 a3i3 a4e3 a4e0
+a a4e0 v3i0 v4b0 c4e0 c4e3 a4b0 a3bi0 a3bi3 a4b3
+a a4e1 v3i1 v4b1 c4e1 c4e0 a4b1 a3bi1 a3bi0 a4b0
+a a4e2 v3i2 v4b2 c4e2 c4e1 a4b2 a3bi2 a3bi1 a4b1
+a a4e3 v3i3 v4b3 c4e3 c4e2 a4b3 a3bi3 a3bi2 a4b2
+a a4b0 v4b0 v4b1 c4e0 c5 a4e1 a4e0 a4b3 a4b1
+a a4b1 v4b1 v4b2 c4e1 c5 a4e2 a4e1 a4b0 a4b2
+a a4b2 v4b2 v4b3 c4e2 c5 a4e3 a4e2 a4b1 a4b3
+a a4b3 v4b3 v4b0 c4e3 c5 a4e0 a4e3 a4b2 a4b0
+
+# Caras
+c c1e0 a1e0 a1e1 a1b0
+c c1e1 a1e1 a1e2 a1b1
+c c1e2 a1e2 a1e3 a1b2
+c c1e3 a1e3 a1e0 a1b3
+c c1i0 a1b0 a1i1 a1bi0 a1i0
+c c1i1 a1b1 a1i2 a1bi1 a1i1
+c c1i2 a1b2 a1i3 a1bi2 a1i2
+c c1i3 a1b3 a1i0 a1bi3 a1i3
+c c2e0 a2e0 a1bi0 a2e1 a2b0
+c c2e1 a2e1 a1bi1 a2e2 a2b1
+c c2e2 a2e2 a1bi2 a2e3 a2b2
+c c2e3 a2e3 a1bi3 a2e0 a2b3
+c c2i0 a2b0 a2i1 a2bi0 a2i0
+c c2i1 a2b1 a2i2 a2bi1 a2i1
+c c2i2 a2b2 a2i3 a2bi2 a2i2
+c c2i3 a2b3 a2i0 a2bi3 a2i3
+c c3e0 a3e0 a2bi0 a3e1 a3b0
+c c3e1 a3e1 a2bi1 a3e2 a3b1
+c c3e2 a3e2 a2bi2 a3e3 a3b2
+c c3e3 a3e3 a2bi3 a3e0 a3b3
+c c3i0 a3b0 a3i1 a3bi0 a3i0
+c c3i1 a3b1 a3i2 a3bi1 a3i1
+c c3i2 a3b2 a3i3 a3bi2 a3i2
+c c3i3 a3b3 a3i0 a3bi3 a3i3
+c c4e0 a4e0 a3bi0 a4e1 a4b0
+c c4e1 a4e1 a3bi1 a4e2 a4b1
+c c4e2 a4e2 a3bi2 a4e3 a4b2
+c c4e3 a4e3 a3bi3 a4e0 a4b3
+c c5 a4b0 a4b1 a4b2 a4b3
+
+# Colores
+color verde 0.0 1.0 0.0 c1e0 c1e1 c1e2 c1e3 c1i0 c1i1 c1i2 c1i3 c2e0 c2e1 c2e2 c2e3 c2i0 c2i1 c2i2 c2i3 c3e0 c3e1 c3e2 c3e3 c3i0 c3i1 c3i2 c3i3
+color rojo 1.0 0.0 0.0 c4e0 c4e1 c4e2 c4e3 c5

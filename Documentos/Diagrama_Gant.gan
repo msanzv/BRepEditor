@@ -6,8 +6,8 @@
         <field id="tpd5" name="Fecha de fin" width="15" order="2"/>
     </view>
     <view id="resource-table">
-        <field id="0" name="Nombre" width="52" order="0"/>
-        <field id="1" name="Función" width="47" order="1"/>
+        <field id="0" name="Nombre" width="50" order="0"/>
+        <field id="1" name="Función" width="50" order="1"/>
     </view>
     <!-- -->
     <calendars>
@@ -39,10 +39,10 @@
         <task id="0" name="Especificación de Modelos BREP" color="#8cb6ce" meeting="false" start="2013-04-30" duration="6" complete="0" expand="true"/>
         <task id="6" name="Elaboración de la interfaz de usuario" color="#8cb6ce" meeting="false" start="2013-05-07" duration="10" complete="0" expand="true"/>
         <task id="8" name="Programación de las clases" color="#8cb6ce" meeting="false" start="2013-05-07" duration="10" complete="0" expand="true"/>
-        <task id="11" name="Comunicacion entre interfaz y clases" color="#8cb6ce" meeting="false" start="2013-05-20" duration="7" complete="0" expand="true"/>
-        <task id="13" name="Corrección de errores" color="#8cb6ce" meeting="false" start="2013-05-28" duration="8" complete="0" expand="true"/>
-        <task id="16" name="Posibles ampliaciones" color="#8cb6ce" meeting="false" start="2013-05-29" duration="7" complete="0" expand="true"/>
-        <task id="28" name="Presentación" color="#8cb6ce" meeting="false" start="2013-06-06" duration="4" complete="0" expand="true"/>
+        <task id="11" name="Comunicacion entre interfaz y clases" color="#8cb6ce" meeting="false" start="2013-05-20" duration="3" complete="0" expand="true"/>
+        <task id="13" name="Corrección de errores" color="#8cb6ce" meeting="false" start="2013-05-22" duration="2" complete="0" expand="true"/>
+        <task id="16" name="Posibles ampliaciones" color="#8cb6ce" meeting="false" start="2013-05-23" duration="7" complete="0" expand="true"/>
+        <task id="28" name="Presentación" color="#8cb6ce" meeting="false" start="2013-06-03" duration="5" complete="0" expand="true"/>
     </tasks>
     <resources/>
     <allocations/>
