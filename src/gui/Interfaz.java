@@ -147,7 +147,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		JMenu mnOpciones = new JMenu("Opciones");
 		menuBar.add(mnOpciones);
 		
-		JMenu mnAyuda = new JMenu("Ayuda");
+		JMenu mnAyuda = new JMenu("Acerca de");
 		menuBar.add(mnAyuda);
 		
 		
@@ -276,20 +276,6 @@ public class Interfaz extends JFrame implements ChangeListener {
 		panelControles.add(sliderR4, "wrap");
 		
 		
-		
-	/*	JLabel lblNewLabel_3 = new JLabel("Altura");
-		panelControles.add(lblNewLabel_3, "cell 0 6");
-		
-		JSlider slider_4 = new JSlider(1, 10, 5);
-		slider_4.setMinorTickSpacing(1);
-		slider_4.setMajorTickSpacing(9);
-		slider_4.setPaintLabels(true);
-		slider_4.setPaintTicks(true);
-		slider_4.setSnapToTicks(true);
-		slider_4.addChangeListener(this);
-		panelControles.add(slider_4, "cell 1 6");*/
-		
-		
 		JLabel labelColor = new JLabel("- Color -");
 		//panelControles.add(new JLabel(""));
 		panelControles.add(labelColor, "span");
@@ -337,16 +323,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		spinner_2.setModel(model3);
 		spinner_2.setEditor(new JSpinner.NumberEditor(spinner_2, FORMAT));
 		panel_2.add(spinner_2, "cell 1 5");
-		
-		public class SliderChangeListener implements ChangeListener {
-			public void stateChanged(ChangeEvent changeEvent) { 
-				Object source = changeEvent.getSource();
-				JSlider theJSlider = (JSlider)source;
-				if (!theJSlider.getValueIsAdjusting()) { 
-					System.out.println ("Slider changed: " + theJSlider.getValue());
-				} 
-			} 
-		} */
+		 */
 		
 	}
   
@@ -411,9 +388,9 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		//Le pasamos el valor del spinner a los radios/alturas
 		arbol.calcularVertices(sliderH1.getValue(), sliderH2.getValue(),
-				sliderH3.getValue(), sliderH4.getValue(),
-				sliderR1.getValue(), sliderR2.getValue(),
-				sliderR3.getValue(), sliderR4.getValue());
+							   sliderH3.getValue(), sliderH4.getValue(),
+							   sliderR1.getValue(), sliderR2.getValue(),
+							   sliderR3.getValue(), sliderR4.getValue());
 
 		//Escribimos en fichero de salida
 		String ss = arbol.toString();
