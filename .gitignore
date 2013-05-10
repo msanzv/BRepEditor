@@ -1,7 +1,18 @@
-*.class
-Icon
 
 # Package Files #
 *.jar
 *.war
 *.ear
+
+## generic files to ignore
+*~
+*.lock
+*.DS_Store
+*.swp
+*.out
+
+# Other #
+bin/
+.dropbox
+*.class
+Icon
