@@ -53,7 +53,11 @@ public class Interfaz extends JFrame implements ChangeListener {
 	private JLabel txtFigura;
 	
 	private JLabel labelH1, labelH2, labelH3, labelH4, labelR1, labelR2, labelR3, labelR4;
-	private MyJSlider sliderH1, sliderH2, sliderH3, sliderH4, sliderR1, sliderR2, sliderR3, sliderR4;
+	private MyJSlider sliderH1, sliderH2, sliderH3, sliderH4, 
+					  sliderR1, sliderR2, sliderR3, sliderR4,
+					  sliderR,  sliderG,  sliderB;;    
+	
+	
 	
 	private static Arbol arbol;
 	
@@ -108,7 +112,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		// Panel de contenido
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 600, 480);
+		setBounds(100, 100, 700, 680);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -116,7 +120,7 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		// Menu
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 600, 22);
+		menuBar.setBounds(0, 0, 774, 22);
 		contentPane.add(menuBar);
 		
 		JMenu mnArchivo = new JMenu("Archivo");
@@ -165,12 +169,13 @@ public class Interfaz extends JFrame implements ChangeListener {
 		
 		// Panel principal
 		JPanel panel = new JPanel();
-		panel.setBounds(6, 73, 588, 299);
+		panel.setBounds(6, 73, 600, 500);
 		contentPane.add(panel);
 		panel.setLayout(new BorderLayout(0, 0));
 		
 		// Subpanel de imagen
 		JPanel panelImagen = new JPanel();
+		
 		panel.add(panelImagen, BorderLayout.WEST);
 		BufferedImage myPicture = null;
 		try {
@@ -275,7 +280,8 @@ public class Interfaz extends JFrame implements ChangeListener {
         sliderR4.addChangeListener(this);
 		panelControles.add(sliderR4, "wrap");
 		
-		
+		//Spinner para los colores
+		//Color Rojo
 		JLabel labelColor = new JLabel("- Color -");
 		//panelControles.add(new JLabel(""));
 		panelControles.add(labelColor, "span");
@@ -283,14 +289,37 @@ public class Interfaz extends JFrame implements ChangeListener {
 		JLabel labelR = new JLabel("R:");
 		panelControles.add(labelR);
 		
-		JSlider sliderR = new JSlider(0, 255, 0);
-		sliderR.setMinorTickSpacing(128);
-		sliderR.setMajorTickSpacing(255);
-		sliderR.setPaintLabels(true);
-		sliderR.setPaintTicks(true);
-		panelControles.add(sliderR);
+		sliderR = new MyJSlider(0, 255, 1, 0);
+        sliderR.addChangeListener(this);
+		panelControles.add(sliderR, "wrap");
 		
-		JSpinner spinnerR = new JSpinner();
+		
+		//Color Verde
+		JLabel labelColor1 = new JLabel("");
+		panelControles.add(new JLabel(""));
+		panelControles.add(labelColor1, "span");
+		
+		JLabel labelG = new JLabel("G:");
+		panelControles.add(labelG);
+		
+		sliderG = new MyJSlider(0,255, 1, 0);
+        sliderG.addChangeListener(this);
+		panelControles.add(sliderG, "wrap");
+		
+		
+		//Color Azul
+		JLabel labelColor2 = new JLabel("");
+		panelControles.add(new JLabel(""));
+		panelControles.add(labelColor2, "span");
+		
+		JLabel labelB = new JLabel("B:");
+		panelControles.add(labelB);
+		
+		sliderB = new MyJSlider(0, 255, 1, 0);
+        sliderB.addChangeListener(this);
+		panelControles.add(sliderB, "wrap");
+		
+		/*JSpinner spinnerR = new JSpinner();
 		SpinnerModel model = new SpinnerNumberModel(0, 0, 255, 1);
 		spinnerR.setModel(model);
 		spinnerR.setEditor(new JSpinner.NumberEditor(spinnerR, FORMAT));
@@ -336,40 +365,57 @@ public class Interfaz extends JFrame implements ChangeListener {
 	    	JSlider jslider = (JSlider) source;
 	    	if(jslider == sliderH1){
 	    		labelH1.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
-	    		if(sliderH1.getValue() <= sliderH2.getValue())
-	    			sliderH2.setValue(sliderH1.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderH2){
 	    		labelH2.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
-	    		if(sliderH2.getValue() >= sliderH1.getValue())
-	    			sliderH2.setValue(sliderH1.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderH3){
 	    		labelH3.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
-	    		if(sliderH3.getValue() >= sliderH2.getValue()||sliderH3.getValue() >= sliderH1.getValue())
-	    			sliderH3.setValue(sliderH2.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderH4){
 	    		labelH4.setText(arbol.HTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
-	    		if(sliderH4.getValue() >= sliderH3.getValue())
-	    			sliderH4.setValue(sliderH3.getValue() - 1);
 	    	}
 	    	else if(jslider == sliderR1){
 	    		labelR1.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		if(sliderR1.getValue() >= sliderR2.getValue())
+	    			sliderR1.setValue(sliderR2.getValue() -1);
 
 	    	}
 	    	else if(jslider == sliderR2){
 	    		labelR2.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		if(sliderR2.getValue() >= sliderR3.getValue())
+	    			sliderR2.setValue(sliderR3.getValue() -1);
 
 	    	}
 	    	else if(jslider == sliderR3){
-	    		labelR3.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
+	    		labelR3.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());	
+	    		if(sliderR3.getValue() <= sliderR4.getValue())
+	    			sliderR3.setValue(sliderR4.getValue() +1);
+	    		
 
 	    	}
 	    	else if(jslider == sliderR4){
 	    		labelR4.setText(arbol.RTAG + (jslider.getValue()<10 ? "  " : "") + jslider.getValue());
-
 	    	}
+	    	else if(jslider == sliderR){
+	    		arbol.getColores().get(0).setR(sliderR.getValue()/255.0);
+	    		arbol.getColores().get(0).setG(sliderG.getValue()/255.0);
+	    		arbol.getColores().get(0).setB(sliderB.getValue()/255.0);
+	    		}
+	    	else if(jslider == sliderG){
+	    		arbol.getColores().get(0).setR(sliderR.getValue()/255.0);
+	    		arbol.getColores().get(0).setG(sliderG.getValue()/255.0);
+	    		arbol.getColores().get(0).setB(sliderB.getValue()/255.0);
+	    	}
+	    	else if(jslider == sliderB){
+	    		arbol.getColores().get(0).setR(sliderR.getValue()/255.0);
+	    		arbol.getColores().get(0).setG(sliderG.getValue()/255.0);
+	    		arbol.getColores().get(0).setB(sliderB.getValue()/255.0);
+	    	}
+
+
+
+	    	
 	    	
 	    	System.out.println("Slider changed: " + jslider.getValue());
 	    		

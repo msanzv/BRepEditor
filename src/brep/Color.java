@@ -6,7 +6,7 @@ public class Color {
 	
 	private String tag = "color";
 	private String nombre;
-	private float r, g, b;
+	private double r, g, b;
 	private ArrayList<String> caras = new ArrayList<String>();
 	
 	
@@ -24,7 +24,7 @@ public class Color {
 	 * @param g
 	 * @param b
 	 */
-	public Color(String nombre, float r, float g, float b){
+	public Color(String nombre, double r, double g, double b){
 		this.nombre = nombre;
 		this.r = r;
 		this.g = g;
@@ -63,43 +63,43 @@ public class Color {
 	/**
 	 * @return the r
 	 */
-	public float getR() {
+	public double getR() {
 		return r;
 	}
 	
 	/**
 	 * @param r the r to set
 	 */
-	public void setR(float r) {
+	public void setR(double r) {
 		this.r = r;
 	}
 	
 	/**
 	 * @return the g
 	 */
-	public float getG() {
+	public double getG() {
 		return g;
 	}
 	
 	/**
 	 * @param g the g to set
 	 */
-	public void setG(float g) {
+	public void setG(double g) {
 		this.g = g;
 	}
 	
 	/**
 	 * @return the b
 	 */
-	public float getB() {
+	public double getB() {
 		return b;
 	}
 	
 	/**
-	 * @param b the b to set
+	 * @param d the b to set
 	 */
-	public void setB(float b) {
-		this.b = b;
+	public void setB(double d) {
+		this.b = d;
 	}
 	
 	/**
